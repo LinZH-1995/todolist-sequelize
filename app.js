@@ -4,6 +4,8 @@ const expSession = require('express-session')
 const methodOverride = require('method-override')
 const bcrypt = require('bcryptjs')
 
+const routes = require('./routes')
+
 const app = express()
 const port = 3000
 
@@ -18,9 +20,7 @@ app.use(expSession({
   saveUninitialized: true
 }))
 
-app.get('/', (req, res) => {
-  res.send('hello world')
-})
+app.use(routes)
 
 app.listen(port, () => {
   console.log(`Now Server is working on localhost:${port}`)
