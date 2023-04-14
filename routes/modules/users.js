@@ -23,10 +23,21 @@ router.get('/register', (req, res) => {
 router.post('/register', async (req, res) => {
   try {
     const { name, email, password, confirmPassword } = req.body
+    if (!name || !email || !password || !confirmPassword) {
+      const error = '所有欄位都是必填。' 
+      return res.render('register', { name, email, password, confirmPassword, error })
+    }
+
+    if (password !== confirmPassword) {
+      const error = 'Password 與 Confirm Password 必須一致！'
+      return res.render('register', { name, email, password, confirmPassword, error })
+    }
+    
     const user = await User.findOne({ where: { email } })
     if (user) {
       console.log('User already exists')
-      return res.render('register', { name, email, password, confirmPassword })
+      const error = 'Email 已經註冊過了。'
+      return res.render('register', { name, email, password, confirmPassword, error })
     }
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
