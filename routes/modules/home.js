@@ -6,9 +6,11 @@ const Todo = db.Todo
 
 router.get('/', async (req, res) => {
   try {
+    const UserId = req.user.id
     const todos = await Todo.findAll({
       raw: true,
       nest: true,
+      where: { UserId }
     })
     res.render('index', { todos })
   } catch (err) {
