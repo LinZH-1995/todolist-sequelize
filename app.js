@@ -5,6 +5,7 @@ const methodOverride = require('method-override')
 const bcrypt = require('bcryptjs')
 
 const routes = require('./routes')
+const usePassport = require('./config/passport.js')
 
 const app = express()
 const port = 3000
@@ -19,6 +20,8 @@ app.use(expSession({
   resave: false,
   saveUninitialized: true
 }))
+
+usePassport(app)
 
 app.use(routes)
 
