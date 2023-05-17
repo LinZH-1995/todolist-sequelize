@@ -48,7 +48,7 @@ A simple todo list app - made by [Express](https://expressjs.com/) on [Node.js](
 
 #### 1. Copy project
 ```
-git clone https://github.com/LinZH-1995/expense-tracker.git
+git clone https://github.com/LinZH-1995/todolist-sequelize.git
 ```
 #### 2. Open project directory
 ```
