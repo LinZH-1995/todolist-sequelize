@@ -52,13 +52,16 @@ git clone https://github.com/LinZH-1995/todolist-sequelize.git
 ```
 #### 2. Open project directory
 ```
-cd expense-tracker
+cd todolist-sequelize
 ```
 #### 3. Install package
 ```
 npm install
 ```
 #### 4. Import seed data (for test feature)
+```
+npx sequelize db:migrate
+```
 ```
 npx sequelize db:seed:all
 ```
